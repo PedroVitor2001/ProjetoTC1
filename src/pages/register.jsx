@@ -2,7 +2,7 @@ import { Heading, Box, FormControl, FormLabel, Input, Button } from "@chakra-ui/
 import { useState, useEffect } from "react";
 import React from "react";
 import Nav from "../components/Nav";
-
+import Footer from "../components/Footer";
 export default function () {
   const [data, setData] = useState([]);
   const [title, setTitle] = useState("");
@@ -80,6 +80,7 @@ export default function () {
           </Button>
         </Box>
       </Box>
+      <Footer />
     </Box>
   );
 }

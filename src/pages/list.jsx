@@ -3,6 +3,7 @@ import { Box, Flex, useDisclosure, Table, Thead, Tr, Th, Tbody, Td, useBreakpoin
 import { useEffect, useState } from "react";
 import ModalComp from "../components/ModalComp";
 import Nav from "../components/Nav";
+import Footer from "../components/Footer";
 
 export default function List() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -70,6 +71,7 @@ export default function List() {
           setDataEdit={setDataEdit}
         />
       )}
+      <Footer />
     </Flex>
   );
 }

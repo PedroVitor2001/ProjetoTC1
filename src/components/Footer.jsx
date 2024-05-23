@@ -7,8 +7,8 @@ const Footer = () => {
       as="footer"
       width="100%"
       py={4}
-      backgroundColor="gray.800"
-      color="white"
+      backgroundColor="gray.100"
+      color="black"
       textAlign="center"
       position="fixed"
       bottom={0}
