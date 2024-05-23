@@ -15,37 +15,23 @@ import {
 import { useState } from "react";
 
 const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
-  const [name, setName] = useState(dataEdit.name || "");
-  const [email, setEmail] = useState(dataEdit.email || "");
+  const [title, settitle] = useState(dataEdit.title || "");
+  const [gender, setgender] = useState(dataEdit.gender || "");
 
   const handleSave = () => {
-    if (!name || !email) return;
-
-    if (emailAlreadyExists()) {
-      return alert("E-mail já cadastrado!");
-    }
-
     if (Object.keys(dataEdit).length) {
-      data[dataEdit.index] = { name, email };
+      data[dataEdit.index] = { title, gender };
     }
 
     const newDataArray = !Object.keys(dataEdit).length
-      ? [...(data ? data : []), { name, email }]
+      ? [...(data ? data : []), { title, gender }]
       : [...(data ? data : [])];
 
-    localStorage.setItem("cad_cliente", JSON.stringify(newDataArray));
+    localStorage.setItem("card_Books", JSON.stringify(newDataArray));
 
     setData(newDataArray);
 
     onClose();
-  };
-
-  const emailAlreadyExists = () => {
-    if (dataEdit.email !== email && data?.length) {
-      return data.find((item) => item.email === email);
-    }
-
-    return false;
   };
 
   return (
@@ -53,17 +39,17 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Cadastro de Clientes</ModalHeader>
+          <ModalHeader>Editar Livros</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <FormControl display="flex" flexDir="column" gap={4}>
               <Box>
-                <FormLabel>Nome</FormLabel>
-                <Input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+                <FormLabel>Titulo</FormLabel>
+                <Input type="text" value={title} onChange={(e) => settitle(e.target.value)} />
               </Box>
               <Box>
-                <FormLabel>E-mail</FormLabel>
-                <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <FormLabel>Gênero</FormLabel>
+                <Input type="text" value={gender} onChange={(e) => setgender(e.target.value)} />
               </Box>
             </FormControl>
           </ModalBody>
