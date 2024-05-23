@@ -1,6 +1,7 @@
-import { Box, Flex, HStack, Link, IconButton, useDisclosure, Stack, Button } from "@chakra-ui/react";
+import { Box, Flex, HStack, IconButton, useDisclosure, Stack, Button } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 import { LuPiggyBank } from "react-icons/lu";
 
@@ -8,21 +9,6 @@ const Links = [
   { key: "1", path: "/", label: "Home" },
   { key: "2", path: "/list", label: "List" },
 ];
-
-const NavLink = ({ children }) => (
-  <Link
-    px={2}
-    py={1}
-    rounded={"md"}
-    _hover={{
-      textDecoration: "none",
-      bg: "gray.200",
-    }}
-    href={"#"}
-  >
-    {children}
-  </Link>
-);
 
 export default function SimpleNavbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -49,9 +35,19 @@ export default function SimpleNavbar() {
           </Box>
           <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
             {Links.map((link) => (
-              <Link key={link.key} to={link.path}>
-                <NavLink>{link.label}</NavLink>
-              </Link>
+              <NavLink
+                key={link.key}
+                to={link.path}
+                px={2}
+                py={1}
+                rounded={"md"}
+                _hover={{
+                  textDecoration: "none",
+                  bg: "gray.200",
+                }}
+              >
+                {link.label}
+              </NavLink>
             ))}
           </HStack>
         </HStack>
@@ -66,9 +62,19 @@ export default function SimpleNavbar() {
         <Box pb={4} display={{ md: "none" }}>
           <Stack as={"nav"} spacing={4}>
             {Links.map((link) => (
-              <Link key={link.key} to={link.path}>
-                <NavLink>{link.label}</NavLink>
-              </Link>
+              <NavLink
+                key={link.key}
+                to={link.path}
+                px={2}
+                py={1}
+                rounded={"md"}
+                _hover={{
+                  textDecoration: "none",
+                  bg: "gray.200",
+                }}
+              >
+                {link.label}
+              </NavLink>
             ))}
           </Stack>
         </Box>
