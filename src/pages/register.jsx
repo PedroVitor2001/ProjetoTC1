@@ -56,6 +56,7 @@ export default function () {
         flexDir={"column"}
         justifyItems={"center"}
         justifySelf={"center"}
+        borderRadius={8}
       >
         <Box display="flex" justifyContent="center" w={"100%"}>
           <Heading display="flex" mt="10px" justifySelf="center" textAlign={"center"}>
