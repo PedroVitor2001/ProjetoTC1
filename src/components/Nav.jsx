@@ -24,14 +24,11 @@ const NavLink = ({ children }) => (
 
 export default function SimpleNavbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-  };
-
-  const handleLogout = () => {
-    setIsLoggedIn(false);
+  const handleClick = () => {
+    window.alert(
+      "Esta aplicação focada em mobile visa ser um fácil cadastro para leituras futuras. Desenvolvida por: Lucas Sigoli, João Castro e Erick Gomes"
+    );
   };
 
   return (
@@ -55,15 +52,9 @@ export default function SimpleNavbar() {
           </HStack>
         </HStack>
         <Flex alignItems={"center"}>
-          {isLoggedIn ? (
-            <Button onClick={handleLogout} variant={"solid"} colorScheme={"teal"} size={"sm"} mr={4}>
-              Logout
-            </Button>
-          ) : (
-            <Button onClick={handleLogin} variant={"solid"} colorScheme={"teal"} size={"sm"} mr={4}>
-              Login
-            </Button>
-          )}
+          <Button className="about-us" onClick={handleClick} variant={"solid"} colorScheme={"teal"} size={"sm"} mr={4}>
+            Saiba Mais
+          </Button>
         </Flex>
       </Flex>
 
