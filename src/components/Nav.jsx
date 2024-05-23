@@ -5,7 +5,7 @@ import React from "react";
 
 import { LuPiggyBank } from "react-icons/lu";
 
-const Links = ["Home", "About", "Services", "Contact"];
+const Links = ["Home", "List"];
 
 const NavLink = ({ children }) => (
   <Link

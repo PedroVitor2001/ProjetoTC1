@@ -30,6 +30,7 @@ export default function List() {
     <Flex h="100vh" align="center" justify="center" fontSize="20px" fontFamily="poppins" flexDir={"column"}>
       <Nav />
       <Box maxW={800} w="100%" h="100vh" py={10} px={2}>
+        <Nav />
         <Box overflowY="auto" height="100%">
           <Table mt="6">
             <Thead>
