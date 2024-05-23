@@ -18,6 +18,7 @@ export default function () {
   const handleSaveClick = () => {
     if (!title || !gender) {
       window.alert("All fields are required");
+
       return;
     }
     const newDataArray = [...data, { title, gender }];
@@ -27,6 +28,7 @@ export default function () {
       window.alert("Cadastrado com sucesso");
     } catch (error) {
       window.alert("Cadastro n realizado");
+      return;
     }
   };
 
