@@ -20,10 +20,15 @@ export default function List() {
     setData(db_costumer);
   }, [setData]);
 
-  const handleRemove = (gender) => {
-    const newArray = data.filter((item) => item.gender !== gender);
-    setData(newArray);
-    localStorage.setItem("card_Books", JSON.stringify(newArray));
+  const handleRemove = (title) => {
+    try {
+      const newArray = data.filter((item) => item.title !== title);
+      setData(newArray);
+      localStorage.setItem("card_Books", JSON.stringify(newArray));
+      window.alert("Removed with success");
+    } catch (error) {
+      window.alert("Not removed");
+    }
   };
 
   return (
@@ -53,7 +58,7 @@ export default function List() {
                     <EditIcon fontSize={20} onClick={() => [setDataEdit({ title, gender, index }), onOpen()]} />
                   </Td>
                   <Td p={0}>
-                    <DeleteIcon fontSize={20} onClick={() => handleRemove(gender)} />
+                    <DeleteIcon fontSize={20} onClick={() => handleRemove(title)} />
                   </Td>
                 </Tr>
               ))}
