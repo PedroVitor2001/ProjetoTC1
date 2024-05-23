@@ -3,6 +3,8 @@ import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import React from "react";
 
+import { LuPiggyBank } from "react-icons/lu";
+
 const Links = ["Home", "About", "Services", "Contact"];
 
 const NavLink = ({ children }) => (
@@ -43,7 +45,9 @@ export default function SimpleNavbar() {
           onClick={isOpen ? onClose : onOpen}
         />
         <HStack spacing={8} alignItems={"center"}>
-          <Box>Logo</Box>
+          <Box>
+            <LuPiggyBank />
+          </Box>
           <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
             {Links.map((link) => (
               <NavLink key={link}>{link}</NavLink>
