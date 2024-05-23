@@ -2,6 +2,7 @@ import { EditIcon, DeleteIcon } from "@chakra-ui/icons";
 import { Box, Flex, useDisclosure, Table, Thead, Tr, Th, Tbody, Td, useBreakpointValue } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import ModalComp from "../components/ModalComp";
+import Nav from "../components/Nav";
 
 export default function List() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -25,7 +26,8 @@ export default function List() {
   };
 
   return (
-    <Flex h="100vh" align="center" justify="center" fontSize="20px" fontFamily="poppins">
+    <Flex h="100vh" align="center" justify="center" fontSize="20px" fontFamily="poppins" flexDir={"column"}>
+      <Nav />
       <Box maxW={800} w="100%" h="100vh" py={10} px={2}>
         <Box overflowY="auto" height="100%">
           <Table mt="6">
