@@ -6,7 +6,6 @@ function App() {
   return (
     <HashRouter>
       {" "}
-      {/* Substitua BrowserRouter por HashRouter */}
       <Routes>
         <Route path="/" element={<Register />} />
         {/*<Route path="/list" element={<ReadPage />} />

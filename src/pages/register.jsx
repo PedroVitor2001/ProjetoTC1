@@ -1,6 +1,7 @@
 import { Heading, Box, FormControl, FormLabel, Input, Button } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import React from "react";
+import Nav from "../components/Nav";
 
 export default function () {
   const [data, setData] = useState([]);
@@ -34,7 +35,7 @@ export default function () {
       alignSelf="center"
       justifySelf="center"
       width={{ base: "100%", md: "50vw", lg: "50vw" }}
-      minH={"100vh"}
+      minH={"80vh"}
       display="flex"
       alignItems="center"
       flexDir="column"
@@ -42,13 +43,14 @@ export default function () {
       m={"auto"}
       maxW={"1920px"}
     >
+      <Nav />
       <Box
         gap={"5vh"}
         w="80%"
         alignContent="center"
         border="1px solid black"
         p={4}
-        mt="auto"
+        mt={"auto"}
         mb="auto"
         display={"flex"}
         flexDir={"column"}
