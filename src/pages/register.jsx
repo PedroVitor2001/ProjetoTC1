@@ -33,7 +33,7 @@ export default function () {
     <Box
       alignSelf="center"
       justifySelf="center"
-      width="50vw"
+      width={{ base: "100%", md: "50vw", lg: "50vw" }}
       minH={"100vh"}
       display="flex"
       alignItems="center"
