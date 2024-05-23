@@ -59,19 +59,11 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
             <FormControl display="flex" flexDir="column" gap={4}>
               <Box>
                 <FormLabel>Nome</FormLabel>
-                <Input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
+                <Input type="text" value={name} onChange={(e) => setName(e.target.value)} />
               </Box>
               <Box>
                 <FormLabel>E-mail</FormLabel>
-                <Input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
+                <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
               </Box>
             </FormControl>
           </ModalBody>
