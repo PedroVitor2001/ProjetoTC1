@@ -1,11 +1,13 @@
 import { Box, Flex, HStack, Link, IconButton, useDisclosure, Stack, Button } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
-import { useState } from "react";
 import React from "react";
 
 import { LuPiggyBank } from "react-icons/lu";
 
-const Links = ["Home", "List"];
+const Links = [
+  { key: "1", path: "/", label: "Home" },
+  { key: "2", path: "/list", label: "List" },
+];
 
 const NavLink = ({ children }) => (
   <Link
@@ -47,7 +49,9 @@ export default function SimpleNavbar() {
           </Box>
           <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
             {Links.map((link) => (
-              <NavLink key={link}>{link}</NavLink>
+              <Link key={link.key} to={link.path}>
+                <NavLink>{link.label}</NavLink>
+              </Link>
             ))}
           </HStack>
         </HStack>
@@ -62,7 +66,9 @@ export default function SimpleNavbar() {
         <Box pb={4} display={{ md: "none" }}>
           <Stack as={"nav"} spacing={4}>
             {Links.map((link) => (
-              <NavLink key={link}>{link}</NavLink>
+              <Link key={link.key} to={link.path}>
+                <NavLink>{link.label}</NavLink>
+              </Link>
             ))}
           </Stack>
         </Box>
