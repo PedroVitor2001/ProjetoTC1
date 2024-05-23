@@ -27,7 +27,7 @@ export default function List() {
   };
 
   return (
-    <Flex h="100vh" align="center" justify="center" fontSize="20px" fontFamily="poppins" flexDir={"column"}>
+    <Flex h="100vh" align="center" justify="center" fontFamily="poppins" flexDir={"column"}>
       <Nav />
       <Box maxW={800} w="100%" h="100vh" py={10} px={2}>
         <Box height="fit-content" mt={"auto"} border="1px solid black" borderRadius={8}>
