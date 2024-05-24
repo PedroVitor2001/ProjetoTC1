@@ -1,6 +1,6 @@
-import { Routes, Route, HashRouter } from "react-router-dom"; // Importe HashRouter
+import { Routes, Route, HashRouter } from "react-router-dom";
 import Register from "./pages/register";
-//import ReadPage from "./pages/readePage";
+import List from "./pages/list";
 
 function App() {
   return (
@@ -8,8 +8,7 @@ function App() {
       {" "}
       <Routes>
         <Route path="/" element={<Register />} />
-        {/*<Route path="/list" element={<ReadPage />} />
-         */}
+        <Route path="/list" element={<List />} />
       </Routes>
     </HashRouter>
   );
