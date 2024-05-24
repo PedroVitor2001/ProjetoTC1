@@ -5,7 +5,7 @@ import React from "react";
 
 import { LuPiggyBank } from "react-icons/lu";
 
-const Links = ["Home", "About", "Services", "Contact"];
+const Links = ["Home", "List"];
 
 const NavLink = ({ children }) => (
   <Link
@@ -54,7 +54,7 @@ export default function SimpleNavbar() {
             ))}
           </HStack>
         </HStack>
-        <Flex alignItems={"center"}>
+        {/* <Flex alignItems={"center"}>
           {isLoggedIn ? (
             <Button onClick={handleLogout} variant={"solid"} colorScheme={"teal"} size={"sm"} mr={4}>
               Logout
@@ -64,7 +64,7 @@ export default function SimpleNavbar() {
               Login
             </Button>
           )}
-        </Flex>
+        </Flex> */}
       </Flex>
 
       {isOpen ? (
