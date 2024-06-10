@@ -63,4 +63,24 @@ public class BookRegistrationTests extends BaseTest {
         alert.accept();
         Thread.sleep(3000);
     }
+
+    @Test
+    @DisplayName("Should not allow registration with empty spaces")
+    void shouldNotAllowRegistrationWithEmptySpaces() throws InterruptedException {
+        HomePage homePage = new HomePage(driver);
+
+        homePage.getTitleElement().sendKeys("     ");
+        homePage.getSecondInputElement().sendKeys("     ");
+        homePage.getButtonElement().click();
+
+        wait.until(ExpectedConditions.alertIsPresent());
+
+        Alert alert = driver.switchTo().alert();
+        String alertText = alert.getText();
+        String expectedText = "All fields are required";
+        assertThat(alertText).isEqualTo(expectedText);
+        Thread.sleep(5000);
+
+        alert.accept();
+    }
 }
