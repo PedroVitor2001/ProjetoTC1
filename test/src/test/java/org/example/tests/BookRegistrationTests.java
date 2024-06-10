@@ -39,4 +39,28 @@ public class BookRegistrationTests extends BaseTest {
         alert.accept();
         Thread.sleep(3000);
     }
+
+    @Test
+    @DisplayName("Should display error alert when trying to register without title and genre")
+    void ShouldDisplayAlertWhenTryingToRegisterWithoutTitleAndGenre() throws InterruptedException {
+        HomePage homePage = new HomePage(driver);
+
+        homePage.getTitleElement();
+
+        homePage.getFirstInputElement().clear();
+        homePage.getSecondInputElement().clear();
+
+        homePage.getButtonElement().click();
+
+        wait.until(ExpectedConditions.alertIsPresent());
+        Alert alert = driver.switchTo().alert();
+        Thread.sleep(3000);
+
+        String alertText = alert.getText();
+        String expectedText = "All fields are required";
+        assertThat(alertText).isEqualTo(expectedText);
+
+        alert.accept();
+        Thread.sleep(3000);
+    }
 }
