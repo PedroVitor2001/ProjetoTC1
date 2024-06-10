@@ -54,6 +54,16 @@ public class HomePage {
         driver.findElement(buttonLocator).click();
     }
 
+    public void registerBookWithEmptyValues() {
+        WebElement firstInput = getFirstInputElement();
+        firstInput.clear();
+
+        WebElement secondInput = getSecondInputElement();
+        secondInput.clear();
+
+        getButtonElement().click();
+    }
+
     public WebElement getButtonLearnMore() {
         return driver.findElement(buttonLearnMoreLocator);
     }
