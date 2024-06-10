@@ -91,10 +91,36 @@ public class BookRegistrationTests extends BaseTest {
 
         homePage.getTitleElement();
 
-        String bookTitle = faker.book().title();
+        String bookGenre = faker.book().genre();
 
         homePage.getFirstInputElement().clear();
-        homePage.getSecondInputElement().sendKeys(bookTitle);
+        homePage.getSecondInputElement().sendKeys(bookGenre);
+
+        homePage.getButtonElement().click();
+
+        wait.until(ExpectedConditions.alertIsPresent());
+        Alert alert = driver.switchTo().alert();
+
+        String alertText = alert.getText();
+        String expectedText = "All fields are required";
+        assertThat(alertText).isEqualTo(expectedText);
+        Thread.sleep(5000);
+
+        alert.accept();
+    }
+
+    @Test
+    @DisplayName("Should display error alert when trying to register without genre")
+    void shouldDisplayErrorAlertWhenTryingToRegisterWithoutGenre() throws InterruptedException {
+        HomePage homePage = new HomePage(driver);
+
+        homePage.getTitleElement();
+
+        String bookTitle = faker.book().title();
+
+        homePage.getFirstInputElement().sendKeys(bookTitle);
+        homePage.getSecondInputElement().clear();
+
 
         homePage.getButtonElement().click();
 
