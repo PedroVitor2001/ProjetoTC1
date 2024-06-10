@@ -25,6 +25,7 @@ public class ResponsiveElementTests extends BaseTest {
     }
 
     @Test
+    @DisplayName("Should show menu items after button click at 767 width")
     void shouldShowMenuItemsAfterButtonClickAt767Width() throws InterruptedException {
 
         HomePage homePage = new HomePage(driver);
