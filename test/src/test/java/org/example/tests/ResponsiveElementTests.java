@@ -1,9 +1,11 @@
 package org.example.tests;
 
 import org.example.pages.HomePage;
+import org.example.pages.ListPage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -25,27 +27,17 @@ public class ResponsiveElementTests extends BaseTest {
     }
 
     @Test
-    @DisplayName("Should show menu items after button click at 767 width")
-    void shouldShowMenuItemsAfterButtonClickAt767Width() throws InterruptedException {
+    @DisplayName("Should display responsive element at 767px width at home page at list page")
+    void shouldDisplayResponsiveElementAt767pxWidthAtHomePageAtListPage() throws InterruptedException {
 
         HomePage homePage = new HomePage(driver);
 
-        driver.manage().window().setSize(new org.openqa.selenium.Dimension(767, 800));
+        homePage.getListLink().click();
 
-        assertThat(homePage.getResponsiveElement().isDisplayed()).isTrue();
-
-        WebElement button = driver.findElement
-                (By.xpath("/html/body/div[1]/div/div[1]/div/button"));
-        button.click();
+        driver.manage().window().setSize(new Dimension(767, 800));
 
         Thread.sleep(5000);
 
-        WebElement homeLink = driver.findElement
-                (By.xpath("/html/body/div[1]/div/div[1]/div[2]/nav/a[1]"));
-        WebElement listLink = driver.findElement
-                (By.xpath("/html/body/div[1]/div/div[1]/div[2]/nav/a[2]"));
-
-        assertTrue(homeLink.isDisplayed());
-        assertTrue(listLink.isDisplayed());
+        assertThat(homePage.getResponsiveElement().isDisplayed()).isTrue();
     }
 }
