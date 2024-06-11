@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -50,19 +52,63 @@ public class BookListTests extends BaseTest {
         Thread.sleep(3000);
 
 
-
-
-
-
-
-
-
         homePage.getListLink().click();
 
         int finalListSize = listpage.getListSize();
 
         Assertions.assertEquals(initialListSize + 1, finalListSize, "O tamanho final da lista não é 1 maior que o tamanho inicial.");
 
+    }
+
+    @Test
+    @DisplayName("Should update book name after editing")
+    void ShouldUpdateBookNameAfterEditing() throws InterruptedException {
+
+        ListPage listpage = new ListPage(driver);
+        HomePage homePage = new HomePage(driver);
+
+        String originalBookTitle = faker.book().title();
+        String bookGenre = faker.book().genre();
+
+        homePage.getFirstInputElement().sendKeys(originalBookTitle);
+
+        homePage.getSecondInputElement().sendKeys(bookGenre);
+
+        homePage.getButtonElement().click();
+
+        wait.until(ExpectedConditions.alertIsPresent());
+        Alert alert = driver.switchTo().alert();
+
+        String alertText = alert.getText();
+        String expectedText = "Cadastrado com sucesso";
+
+        alert.accept();
+
+        homePage.getListLink().click();
+
+        String newBookTitle = faker.book().title();
+
+        listpage.getEditButton().click();
+        Thread.sleep(2000);
+
+        listpage.getEditTitle().clear();
+        Thread.sleep(2000);
+
+        listpage.getEditTitle().sendKeys(newBookTitle);
+        Thread.sleep(2000);
+
+        listpage.getSaveEdit().click();
+        Thread.sleep(2000);
+
+        WebElement extractedBookName = listpage.getBookName();
+
+        boolean nameChanged;
+
+        if (extractedBookName.equals(originalBookTitle)){
+            nameChanged = false;
+        }else{nameChanged = true;}
+
+        Assertions.assertTrue(nameChanged,"se fuderam");
     }
 
 }
