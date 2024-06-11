@@ -16,6 +16,7 @@ public class ListPage {
     private final By buttonLearnMoreLocator = By.xpath("/html/body/div[1]/div/div[1]/div/div[2]/button");
     private final By responsiveElementLocator = By.xpath("/html/body/div[1]/div/div[1]/div/button");
     private final By editButton = By.cssSelector(".chakra-icon.css-14bgo1y");
+    private final By deleteButton = By.xpath("/html/body/div[1]/div/div[2]/div/table/tbody/tr/td[4]/svg");
     private final By editTitle = By.xpath("/html/body/div[3]/div[3]/div/section/div/div/div[1]/input");
     private final By saveEdit = By.xpath("/html/body/div[3]/div[3]/div/section/footer/button[1]");
     private final By bookName = By.xpath("/html/body/div[1]/div/div[2]/div/table/tbody/tr[1]/td[1]");
@@ -38,6 +39,11 @@ public class ListPage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(editButton));
         return driver.findElement(editButton);
     }
+    public WebElement getDeleteButton() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(deleteButton));
+        return driver.findElement(deleteButton);
+    }
+
     public WebElement getEditTitle() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(editTitle));
         return driver.findElement(editTitle);

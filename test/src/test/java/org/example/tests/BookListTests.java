@@ -104,12 +104,49 @@ public class BookListTests extends BaseTest {
 
         boolean nameChanged;
 
-        if (extractedBookName.equals(originalBookTitle)){
+        if (extractedBookName.equals(originalBookTitle)) {
             nameChanged = false;
-        }else{nameChanged = true;}
+        } else {
+            nameChanged = true;
+        }
 
-        Assertions.assertTrue(nameChanged,"se fuderam");
+        Assertions.assertTrue(nameChanged, "Edição não realizada");
     }
 
+    @Test
+    @DisplayName("Should delete book")
+    void ShouldDeleteBook() throws InterruptedException {
+
+        ListPage listpage = new ListPage(driver);
+        HomePage homePage = new HomePage(driver);
+
+        String originalBookTitle = faker.book().title();
+        String bookGenre = faker.book().genre();
+
+        homePage.getFirstInputElement().sendKeys(originalBookTitle);
+
+        homePage.getSecondInputElement().sendKeys(bookGenre);
+
+        homePage.getButtonElement().click();
+
+        wait.until(ExpectedConditions.alertIsPresent());
+        Alert alert = driver.switchTo().alert();
+
+        alert.accept();
+
+        homePage.getListLink().click();
+
+        listpage.getDeleteButton().click();
+
+        wait.until(ExpectedConditions.alertIsPresent());
+        Alert alert2 = driver.switchTo().alert();
+
+        String alertText = alert2.getText();
+        String expectedText = "Removed with success";
+        assertThat(alertText).isEqualTo(expectedText);
+        Thread.sleep(5000);
+
+
+    }
 }
 
