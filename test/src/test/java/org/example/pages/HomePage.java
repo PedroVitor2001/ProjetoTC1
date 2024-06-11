@@ -11,6 +11,7 @@ public class HomePage {
     private final WebDriver driver;
     private final WebDriverWait wait;
 
+    private final By listLinkLocator = By.xpath("/html/body/div[1]/div/div[1]/div/div[1]/nav/a[2]");
     private final By titleLocator = By.xpath("/html/body/div[1]/div/div[2]/div[1]/h2");
     private final By firstInputLocator = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div[1]/input");
     private final By secondInputLocator = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div[2]/input");
@@ -44,6 +45,10 @@ public class HomePage {
         return driver.findElement(homeLinkLocator);
     }
 
+    public WebElement getListLink() {
+        return driver.findElement(listLinkLocator);
+    }
+
     public WebElement getResponsiveElement() {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(responsiveElementLocator));
     }
@@ -57,4 +62,5 @@ public class HomePage {
     public WebElement getButtonLearnMore() {
         return driver.findElement(buttonLearnMoreLocator);
     }
+
 }

@@ -25,9 +25,6 @@ public class ListPage {
         return driver.findElement(listLinkLocator);
     }
 
-    public int getListSize() {
-        return driver.findElements(listElementLocator).size();
-    }
 
     public WebElement getButtonElement() {
         return driver.findElement(buttonLearnMoreLocator);
@@ -35,5 +32,23 @@ public class ListPage {
 
     public WebElement getResponsiveElement() {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(responsiveElementLocator));
+    }
+
+    public int getListSize() {
+        int listSize = 0;
+        int i = 1;
+        boolean found = true;
+
+        while (found) {
+            try {
+                WebElement listElement = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/table/tbody/tr[" + i + "]"));
+                i++;
+                listSize++;
+            } catch (org.openqa.selenium.NoSuchElementException e) {
+                found = false;
+            }
+        }
+
+        return listSize;
     }
 }
