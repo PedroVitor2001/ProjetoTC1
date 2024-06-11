@@ -33,23 +33,23 @@ public class BookListTests extends BaseTest {
         String bookGenre = faker.book().genre();
 
         homePage.getFirstInputElement().sendKeys(bookTitle);
-        Thread.sleep(3000);
+
 
         homePage.getSecondInputElement().sendKeys(bookGenre);
-        Thread.sleep(3000);
+
 
         homePage.getButtonElement().click();
 
         wait.until(ExpectedConditions.alertIsPresent());
         Alert alert = driver.switchTo().alert();
-        Thread.sleep(3000);
+
 
         String alertText = alert.getText();
         String expectedText = "Cadastrado com sucesso";
         assertThat(alertText).isEqualTo(expectedText);
 
         alert.accept();
-        Thread.sleep(3000);
+
 
 
         homePage.getListLink().click();
@@ -89,16 +89,16 @@ public class BookListTests extends BaseTest {
         String newBookTitle = faker.book().title();
 
         listpage.getEditButton().click();
-        Thread.sleep(2000);
+
 
         listpage.getEditTitle().clear();
-        Thread.sleep(2000);
+
 
         listpage.getEditTitle().sendKeys(newBookTitle);
-        Thread.sleep(2000);
+
 
         listpage.getSaveEdit().click();
-        Thread.sleep(2000);
+
 
         WebElement extractedBookName = listpage.getBookName();
 
@@ -144,7 +144,7 @@ public class BookListTests extends BaseTest {
         String alertText = alert2.getText();
         String expectedText = "Removed with success";
         assertThat(alertText).isEqualTo(expectedText);
-        Thread.sleep(5000);
+
 
 
     }

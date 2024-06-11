@@ -1,15 +1,11 @@
 package org.example.tests;
 
 import org.example.pages.HomePage;
-import org.example.pages.ListPage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
-import org.openqa.selenium.WebElement;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ResponsiveElementTests extends BaseTest {
 
@@ -20,8 +16,6 @@ public class ResponsiveElementTests extends BaseTest {
         HomePage homePage = new HomePage(driver);
 
         driver.manage().window().setSize(new org.openqa.selenium.Dimension(767, 800));
-
-        Thread.sleep(5000);
 
         assertThat(homePage.getResponsiveElement().isDisplayed()).isTrue();
     }
@@ -35,8 +29,6 @@ public class ResponsiveElementTests extends BaseTest {
         homePage.getListLink().click();
 
         driver.manage().window().setSize(new Dimension(767, 800));
-
-        Thread.sleep(5000);
 
         assertThat(homePage.getResponsiveElement().isDisplayed()).isTrue();
     }

@@ -26,7 +26,7 @@ public class AlertTests extends BaseTest{
         String expectedText = "Esta aplicação focada em mobile visa ser um fácil cadastro para leituras futuras. " +
                 "Desenvolvida por: Lucas Sigoli, João Castro e Erick Gomes";
         assertThat(alertText).isEqualTo(expectedText);
-        Thread.sleep(5000);
+
 
         alert.accept();
 
@@ -50,7 +50,7 @@ public class AlertTests extends BaseTest{
         String expectedText = "Esta aplicação focada em mobile visa ser um fácil cadastro para leituras futuras. " +
                 "Desenvolvida por: Lucas Sigoli, João Castro e Erick Gomes";
         assertThat(alertText).isEqualTo(expectedText);
-        Thread.sleep(5000);
+
 
         alert.accept();
 
